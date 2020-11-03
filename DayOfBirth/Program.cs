@@ -9,6 +9,14 @@ namespace DayOfBirth
 
 
 
+        static void GetInput() 
+        {
+            Console.WriteLine("What is your birthdate? (yyyy.mm.dd)");
+            inputDate = Console.ReadLine();
+        }
+
+
+
         static bool ValidateInput()
         {
             DateTime result;
@@ -19,13 +27,14 @@ namespace DayOfBirth
                 return true;
             }
 
-            Console.WriteLine("\nWrong format. Try again!");
-            return false;        
+            Console.WriteLine("\nWrong format. Try again!");  
+            return false;
         }
 
 
 
-        static void GetDayOfBirth(){            
+        static void GetDayOfBirth()
+        {            
             int century = dateOfBirth.Year / 100;
             int year = dateOfBirth.Year % 100;
             int month = dateOfBirth.Month;
@@ -51,13 +60,14 @@ namespace DayOfBirth
 
         static void Main(string[] args)
         {
+            GetInput();
+
+            // Ask for Input Until Valid
             while (!ValidateInput())
             {
-                Console.WriteLine("Birthdate?(yyyy.mm.dd)");
-                inputDate = Console.ReadLine();
+                GetInput();
             }
 
-            // Algorithm to get day
             GetDayOfBirth();
         }
     }
