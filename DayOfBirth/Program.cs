@@ -11,7 +11,7 @@ namespace DayOfBirth
 
         static void GetInput() 
         {
-            Console.WriteLine("What is your birthdate? (yyyy.mm.dd)");
+            Console.WriteLine("What is your birth date? (yyyy.mm.dd)");
             inputDate = Console.ReadLine();
         }
 
@@ -53,7 +53,7 @@ namespace DayOfBirth
             // Get Weekday Name
             weekday = Enum.GetName(typeof(DayOfWeek), weekdayIndex -1);
 
-            Console.WriteLine("{0} is a {1}",dateOfBirth.ToShortDateString(), weekday);
+            Console.WriteLine($"{dateOfBirth.ToShortDateString()} is a {weekday}");
         }
 
 
