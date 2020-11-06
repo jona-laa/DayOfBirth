@@ -33,27 +33,29 @@ namespace DayOfBirth
 
 
 
+        // Get Week day Index
+        static int GetWeekdayIndex(int day, int month, int year, int century) => (day + ((13*(month+1))/5) + year + (year/4) + (century/4) + 5*century ) % 7;
+
+
+
+        // Get Week day Name
+        static string GetWeekdayName(int weekdayIndex) => Enum.GetName(typeof(DayOfWeek), weekdayIndex -1);
+
+
+
         static void GetDayOfBirth()
         {            
             int century = dateOfBirth.Year / 100;
             int year = dateOfBirth.Year % 100;
             int month = dateOfBirth.Month;
             int day = dateOfBirth.Day;
-            int weekdayIndex;
-            string weekday;
 
             if (month < 3) {
                 month = month + 12;
                 year = year - 1;
-            }
+            }       
 
-            // Zeller's Magic Formula
-            weekdayIndex = (day + ((13*(month+1))/5) + year + (year/4) + (century/4) + 5*century ) % 7;
-            
-            // Get Weekday Name
-            weekday = Enum.GetName(typeof(DayOfWeek), weekdayIndex -1);
-
-            Console.WriteLine($"{dateOfBirth.ToShortDateString()} is a {weekday}");
+            Console.WriteLine($"{dateOfBirth.ToShortDateString()} is a {GetWeekdayName(GetWeekdayIndex(day, month, year, century))}");
         }
 
 
